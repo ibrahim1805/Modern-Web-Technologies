@@ -13,22 +13,20 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Get the directory name of the current module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Create the server
+
 const app = http.createServer((req, res) => {
-    // Define the path to the "pages" folder
+
     const pagesDir = path.join(__dirname, "pages");
 
-    // Function to serve HTML files
     const serveHtmlFile = (fileName, res) => {
         const filePath = path.join(pagesDir, fileName);
-        console.log("Serving file:", filePath); // Debugging: Log the file path
+        console.log("Serving file:", filePath); 
         fs.readFile(filePath, (err, data) => {
             if (err) {
-                console.error(`Error reading file: ${filePath}`, err); // Log the error
+                console.error(`Error reading file: ${filePath}`, err); 
                 res.writeHead(500, { "Content-Type": "text/plain" });
                 res.end("Internal Server Error");
             } else {
@@ -38,7 +36,6 @@ const app = http.createServer((req, res) => {
         });
     };
 
-    // Handle routes
     if (req.url === "/") {
         serveHtmlFile("home.html", res);
     } else if (req.url === "/about") {
@@ -54,7 +51,7 @@ const app = http.createServer((req, res) => {
     } else if (req.url === "/search") {
         serveHtmlFile("search.html", res);
     } else {
-        // Handle 404 - Page Not Found
+       
         serveHtmlFile("404.html", res);
     }
 });
