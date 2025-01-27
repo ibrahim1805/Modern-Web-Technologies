@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "lab1",
   "version": "1.0.0",
   "main": "lab01-p1.js",
@@ -11,5 +12,8 @@
   "description": "",
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
